@@ -1,0 +1,39 @@
+﻿
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Login = "GateWayLogin";
+}
+@if (Request.IsAuthenticated)
+{
+    <div class="dropdown user-menu">
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+        {
+            @Html.AntiForgeryToken()
+
+
+            <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="~/Content/startui/img/avatar-2-64.png" alt="">
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
+                <a class="dropdown-item" href="@Url.Action("Index", "Manage")"><span class="font-icon glyphicon glyphicon-user"></span>Profile</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">
+                    <span class="font-icon glyphicon glyphicon-log-out"></span>
+                    Logout
+                </a>
+            </div>
+        }
+    </div>
+}
+else
+{
+    @*<div class="dropdown user-menu">
+        @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+    @*@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+
+        </div>*@
+    if (ViewBag.Title != "Register")
+    {
+        @RenderPage("~/Views/Account/Login.cshtml", ViewBag.Login)
+    }
+}

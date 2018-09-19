@@ -1,0 +1,63 @@
+﻿@model IEnumerable<LoginSample.Models.ddu_master>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="box-typical">
+    <header class="box-typical-header">
+        <div class="tbl-row">
+            <div class="tbl-cell tbl-cell-title">
+                <h3>DDU Master Details</h3>
+            </div>
+            <div class="tbl-cell tbl-cell-action-bordered">
+                <a class="btn btn-primary btn-sm" role="button" href="@Url.Action("Create","ddu_master")">
+                    Add
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="box-typical-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="table-edit">
+                <tbody>
+                    <tr>
+                        <th>
+                            Manufacturer
+                        </th>
+                        <th>
+                           Model
+                        </th>
+                   
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                        
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Manufacturer)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Model)
+                            </td>
+                          
+                            <td>
+                                <div class="btn-group btn-group-sm" style="float: none;">
+                                    <a class="tabledit-edit-button btn btn-sm btn-default" role="button" href="@Url.Action("Edit",new { id = item.DDUMiD})">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                    <a class="tabledit-edit-button btn btn-sm btn-default" role="button" href="@Url.Action("Delete",new { id = item.DDUMiD})">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div><!--.box-typical-body-->
+</section>

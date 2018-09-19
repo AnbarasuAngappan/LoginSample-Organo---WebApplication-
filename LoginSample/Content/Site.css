@@ -1,0 +1,22 @@
+﻿
+.table th {
+    padding: 5px;
+    background: #f6f8fa;
+}
+
+.table td {
+    padding: 5px;
+    height: auto;
+}
+
+.table .tabledit-edit-button {
+    padding: 2px 4px 2px 4px;
+}
+
+.box-typical .box-typical-header .tbl-cell {
+    padding: 4px;
+}
+
+    .box-typical .box-typical-header .tbl-cell.tbl-cell-action-bordered {
+        padding: 4px;
+    }

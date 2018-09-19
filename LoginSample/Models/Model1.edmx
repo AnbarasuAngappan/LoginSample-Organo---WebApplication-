@@ -1,0 +1,1422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="designdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'designdb.dbo.__MigrationHistory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+            <PropertyRef Name="Model" />
+            <PropertyRef Name="ProductVersion" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'designdb.dbo.AspNetRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'designdb.dbo.AspNetUserClaims' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'designdb.dbo.AspNetUserLogins' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'designdb.dbo.AspNetUserRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'designdb.dbo.AspNetUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="EmailConfirmed" />
+            <PropertyRef Name="PhoneNumberConfirmed" />
+            <PropertyRef Name="TwoFactorEnabled" />
+            <PropertyRef Name="LockoutEnabled" />
+            <PropertyRef Name="AccessFailedCount" />
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ddu master">
+          <Key>
+            <PropertyRef Name="DDUMiD" />
+          </Key>
+          <Property Name="DDUMiD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GasReading">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SocietyID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HouseID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MeterID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Port" Type="nvarchar" MaxLength="50" />
+          <Property Name="Utilityprovider" Type="nvarchar(max)" />
+          <Property Name="Reading" Type="bigint" />
+          <Property Name="Datetimestamp" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Timestamp" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Graphs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SocietyID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HouseID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OwnerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MeterID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Port" Type="nvarchar" MaxLength="50" />
+          <Property Name="UtilityProvider" Type="nvarchar" MaxLength="50" />
+          <Property Name="SerialNo" Type="bigint" />
+          <Property Name="Reading" Type="float" />
+          <Property Name="PowerOut" Type="float" />
+          <Property Name="Datetimestamp" Type="datetime" Nullable="false" />
+          <Property Name="Timestamp" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="house details">
+          <Key>
+            <PropertyRef Name="HiD" />
+          </Key>
+          <Property Name="HiD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SiD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="House No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Owner Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Owner Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Owner Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tenant Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tenant Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tenant Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Maintainance Notes" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="meter details">
+          <Key>
+            <PropertyRef Name="MiD" />
+          </Key>
+          <Property Name="MiD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HiD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SiD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MBUS Device ID" Type="nvarchar" MaxLength="50" />
+          <Property Name="MMiD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UiD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Error Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Error Msg" Type="nvarchar" MaxLength="50" />
+          <Property Name="IP Address" Type="varchar" MaxLength="16" />
+          <Property Name="Port" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="meter master">
+          <Key>
+            <PropertyRef Name="MMiD" />
+          </Key>
+          <Property Name="MMiD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Protocol" Type="nvarchar" MaxLength="50" />
+          <Property Name="Register Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Import/Export" Type="varchar" MaxLength="16" />
+          <Property Name="RiD" Type="smallint" />
+          <Property Name="PiD" Type="smallint" />
+          <Property Name="TiD" Type="smallint" />
+          <Property Name="IiD" Type="smallint" />
+        </EntityType>
+        <EntityType Name="MeterTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Manufacturer" Type="varchar" MaxLength="50" />
+          <Property Name="Model" Type="varchar" MaxLength="50" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="Protocol" Type="varchar" MaxLength="50" />
+          <Property Name="RegisterType" Type="varchar" MaxLength="16" />
+          <Property Name="RegisterAddress" Type="int" />
+        </EntityType>
+        <EntityType Name="ProtocolTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Registers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="site details">
+          <Key>
+            <PropertyRef Name="SiD" />
+          </Key>
+          <Property Name="SiD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Site Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Builder" Type="nvarchar" MaxLength="50" />
+          <Property Name="Logo" Type="nvarchar(max)" />
+          <Property Name="Street Road" Type="nvarchar" MaxLength="50" />
+          <Property Name="Area" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pin Code" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lat" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact Person Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact Person Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contact Person Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Admin Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Admin Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Table_1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_2">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Units">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Startunit" Type="int" />
+          <Property Name="Endunit" Type="int" />
+          <Property Name="Price" Type="int" />
+        </EntityType>
+        <EntityType Name="utility tarrif master">
+          <Key>
+            <PropertyRef Name="UiD" />
+          </Key>
+          <Property Name="UiD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Utility Provider Name" Type="nvarchar(max)" />
+          <Property Name="Utility Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tarrif Master" Type="nvarchar" MaxLength="50" />
+          <Property Name="Taxation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Charge Back" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Water">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SocietyID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HouseID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MeterID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Port" Type="nvarchar" MaxLength="50" />
+          <Property Name="Utilityprovider" Type="nvarchar(max)" />
+          <Property Name="Reading" Type="bigint" />
+          <Property Name="Datetimestamp" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Timestamp" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'designdb.dbo.Organo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Organo">
+          <Key>
+            <PropertyRef Name="SiD" />
+            <PropertyRef Name="MiD" />
+          </Key>
+          <Property Name="SiD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="House No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Owner Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="Utility Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="IP Address" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <Association Name="FK_house details_site details">
+          <End Role="site details" Type="Self.site details" Multiplicity="1" />
+          <End Role="house details" Type="Self.house details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="site details">
+              <PropertyRef Name="SiD" />
+            </Principal>
+            <Dependent Role="house details">
+              <PropertyRef Name="SiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meter details_house details">
+          <End Role="house details" Type="Self.house details" Multiplicity="1" />
+          <End Role="meter details" Type="Self.meter details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="house details">
+              <PropertyRef Name="HiD" />
+            </Principal>
+            <Dependent Role="meter details">
+              <PropertyRef Name="HiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meter details_meter master">
+          <End Role="meter master" Type="Self.meter master" Multiplicity="1" />
+          <End Role="meter details" Type="Self.meter details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="meter master">
+              <PropertyRef Name="MMiD" />
+            </Principal>
+            <Dependent Role="meter details">
+              <PropertyRef Name="MMiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meter details_site details">
+          <End Role="site details" Type="Self.site details" Multiplicity="1" />
+          <End Role="meter details" Type="Self.meter details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="site details">
+              <PropertyRef Name="SiD" />
+            </Principal>
+            <Dependent Role="meter details">
+              <PropertyRef Name="SiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meter details_utility tarrif master">
+          <End Role="utility tarrif master" Type="Self.utility tarrif master" Multiplicity="1" />
+          <End Role="meter details" Type="Self.meter details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utility tarrif master">
+              <PropertyRef Name="UiD" />
+            </Principal>
+            <Dependent Role="meter details">
+              <PropertyRef Name="UiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meter master_ProtocolTypes">
+          <End Role="ProtocolTypes" Type="Self.ProtocolTypes" Multiplicity="0..1" />
+          <End Role="meter master" Type="Self.meter master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocolTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="meter master">
+              <PropertyRef Name="PiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meter master_Registers">
+          <End Role="Registers" Type="Self.Registers" Multiplicity="0..1" />
+          <End Role="meter master" Type="Self.meter master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="meter master">
+              <PropertyRef Name="RiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meter master_Table_1">
+          <End Role="Table_1" Type="Self.Table_1" Multiplicity="0..1" />
+          <End Role="meter master" Type="Self.meter master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_1">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="meter master">
+              <PropertyRef Name="TiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meter master_Table_2">
+          <End Role="Table_2" Type="Self.Table_2" Multiplicity="0..1" />
+          <End Role="meter master" Type="Self.meter master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_2">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="meter master">
+              <PropertyRef Name="IiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_1_Table_1">
+          <End Role="Table_1" Type="Self.Table_1" Multiplicity="1" />
+          <End Role="Table_11" Type="Self.Table_1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Table_1">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Table_11">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="charts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Electricity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Fromdate" Type="datetime" Mode="In" />
+          <Parameter Name="Todate" Type="datetime" Mode="In" />
+          <Parameter Name="Villa" Type="nvarchar" Mode="In" />
+          <Parameter Name="time" Type="time" Mode="In" />
+        </Function>
+        <Function Name="EMeter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GasMeter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="WaterMeter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="designdbModelStoreContainer">
+          <EntitySet Name="ddu master" EntityType="Self.ddu master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GasReading" EntityType="Self.GasReading" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Graphs" EntityType="Self.Graphs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="house details" EntityType="Self.house details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="meter details" EntityType="Self.meter details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="meter master" EntityType="Self.meter master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MeterTypes" EntityType="Self.MeterTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProtocolTypes" EntityType="Self.ProtocolTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registers" EntityType="Self.Registers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="site details" EntityType="Self.site details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_1" EntityType="Self.Table_1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_2" EntityType="Self.Table_2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Units" EntityType="Self.Units" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="utility tarrif master" EntityType="Self.utility tarrif master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Water" EntityType="Self.Water" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [__MigrationHistory].[MigrationId] AS [MigrationId], 
+    [__MigrationHistory].[ContextKey] AS [ContextKey], 
+    [__MigrationHistory].[Model] AS [Model], 
+    [__MigrationHistory].[ProductVersion] AS [ProductVersion]
+    FROM [dbo].[__MigrationHistory] AS [__MigrationHistory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetRoles].[Id] AS [Id], 
+    [AspNetRoles].[Name] AS [Name]
+    FROM [dbo].[AspNetRoles] AS [AspNetRoles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetUserClaims].[Id] AS [Id], 
+    [AspNetUserClaims].[UserId] AS [UserId], 
+    [AspNetUserClaims].[ClaimType] AS [ClaimType], 
+    [AspNetUserClaims].[ClaimValue] AS [ClaimValue]
+    FROM [dbo].[AspNetUserClaims] AS [AspNetUserClaims]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetUserLogins].[LoginProvider] AS [LoginProvider], 
+    [AspNetUserLogins].[ProviderKey] AS [ProviderKey], 
+    [AspNetUserLogins].[UserId] AS [UserId]
+    FROM [dbo].[AspNetUserLogins] AS [AspNetUserLogins]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetUserRoles].[UserId] AS [UserId], 
+    [AspNetUserRoles].[RoleId] AS [RoleId]
+    FROM [dbo].[AspNetUserRoles] AS [AspNetUserRoles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetUsers].[Id] AS [Id], 
+    [AspNetUsers].[Email] AS [Email], 
+    [AspNetUsers].[EmailConfirmed] AS [EmailConfirmed], 
+    [AspNetUsers].[PasswordHash] AS [PasswordHash], 
+    [AspNetUsers].[SecurityStamp] AS [SecurityStamp], 
+    [AspNetUsers].[PhoneNumber] AS [PhoneNumber], 
+    [AspNetUsers].[PhoneNumberConfirmed] AS [PhoneNumberConfirmed], 
+    [AspNetUsers].[TwoFactorEnabled] AS [TwoFactorEnabled], 
+    [AspNetUsers].[LockoutEndDateUtc] AS [LockoutEndDateUtc], 
+    [AspNetUsers].[LockoutEnabled] AS [LockoutEnabled], 
+    [AspNetUsers].[AccessFailedCount] AS [AccessFailedCount], 
+    [AspNetUsers].[UserName] AS [UserName]
+    FROM [dbo].[AspNetUsers] AS [AspNetUsers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Organo" EntityType="Self.Organo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Organo].[SiD] AS [SiD], 
+    [Organo].[House No] AS [House No], 
+    [Organo].[Owner Name] AS [Owner Name], 
+    [Organo].[MiD] AS [MiD], 
+    [Organo].[Manufacturer] AS [Manufacturer], 
+    [Organo].[Model] AS [Model], 
+    [Organo].[Utility Type] AS [Utility Type], 
+    [Organo].[IP Address] AS [IP Address]
+    FROM [dbo].[Organo] AS [Organo]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_house details_site details" Association="Self.FK_house details_site details">
+            <End Role="site details" EntitySet="site details" />
+            <End Role="house details" EntitySet="house details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meter details_house details" Association="Self.FK_meter details_house details">
+            <End Role="house details" EntitySet="house details" />
+            <End Role="meter details" EntitySet="meter details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meter details_meter master" Association="Self.FK_meter details_meter master">
+            <End Role="meter master" EntitySet="meter master" />
+            <End Role="meter details" EntitySet="meter details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meter details_site details" Association="Self.FK_meter details_site details">
+            <End Role="site details" EntitySet="site details" />
+            <End Role="meter details" EntitySet="meter details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meter details_utility tarrif master" Association="Self.FK_meter details_utility tarrif master">
+            <End Role="utility tarrif master" EntitySet="utility tarrif master" />
+            <End Role="meter details" EntitySet="meter details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meter master_ProtocolTypes" Association="Self.FK_meter master_ProtocolTypes">
+            <End Role="ProtocolTypes" EntitySet="ProtocolTypes" />
+            <End Role="meter master" EntitySet="meter master" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meter master_Registers" Association="Self.FK_meter master_Registers">
+            <End Role="Registers" EntitySet="Registers" />
+            <End Role="meter master" EntitySet="meter master" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meter master_Table_1" Association="Self.FK_meter master_Table_1">
+            <End Role="Table_1" EntitySet="Table_1" />
+            <End Role="meter master" EntitySet="meter master" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meter master_Table_2" Association="Self.FK_meter master_Table_2">
+            <End Role="Table_2" EntitySet="Table_2" />
+            <End Role="meter master" EntitySet="meter master" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_1_Table_1" Association="Self.FK_Table_1_Table_1">
+            <End Role="Table_1" EntitySet="Table_1" />
+            <End Role="Table_11" EntitySet="Table_1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="designdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GasReading">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SocietyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HouseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MeterID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Port" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Utilityprovider" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Reading" Type="Int64" />
+          <Property Name="Datetimestamp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Timestamp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Graph">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SocietyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HouseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OwnerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MeterID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Port" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UtilityProvider" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNo" Type="Int64" />
+          <Property Name="Reading" Type="Double" />
+          <Property Name="PowerOut" Type="Double" />
+          <Property Name="Datetimestamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Timestamp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="house_detail">
+          <Key>
+            <PropertyRef Name="HiD" />
+          </Key>
+          <Property Name="HiD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SiD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="House_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Owner_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Owner_Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Owner_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tenant_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tenant_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tenant_Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Maintainance_Notes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="site_details" Relationship="Self.FK_house_details_site_details" FromRole="house_details" ToRole="site_details" />
+          <NavigationProperty Name="meter_details" Relationship="Self.FK_meter_details_house_details" FromRole="house_details" ToRole="meter_details" />
+        </EntityType>
+        <EntityType Name="meter_detail">
+          <Key>
+            <PropertyRef Name="MiD" />
+          </Key>
+          <Property Name="MiD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HiD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SiD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MBUS_Device_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MMiD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UiD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Error_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Error_Msg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IP_Address" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Port" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="house_details" Relationship="Self.FK_meter_details_house_details" FromRole="meter_details" ToRole="house_details" />
+          <NavigationProperty Name="meter_master" Relationship="Self.FK_meter_details_meter_master" FromRole="meter_details" ToRole="meter_master" />
+          <NavigationProperty Name="site_details" Relationship="Self.FK_meter_details_site_details" FromRole="meter_details" ToRole="site_details" />
+          <NavigationProperty Name="utility_tarrif_master" Relationship="Self.FK_meter_details_utility_tarrif_master" FromRole="meter_details" ToRole="utility_tarrif_master" />
+        </EntityType>
+        <EntityType Name="meter_master">
+          <Key>
+            <PropertyRef Name="MMiD" />
+          </Key>
+          <Property Name="MMiD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Protocol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Register_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Import_Export" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="RiD" Type="Int16" />
+          <Property Name="PiD" Type="Int16" />
+          <Property Name="TiD" Type="Int16" />
+          <Property Name="IiD" Type="Int16" />
+          <NavigationProperty Name="meter_details" Relationship="Self.FK_meter_details_meter_master" FromRole="meter_master" ToRole="meter_details" />
+          <NavigationProperty Name="ProtocolType" Relationship="Self.FK_meter_master_ProtocolTypes" FromRole="meter_master" ToRole="ProtocolTypes" />
+          <NavigationProperty Name="Register" Relationship="Self.FK_meter_master_Registers" FromRole="meter_master" ToRole="Registers" />
+          <NavigationProperty Name="Table_1" Relationship="Self.FK_meter_master_Table_1" FromRole="meter_master" ToRole="Table_1" />
+          <NavigationProperty Name="Table_2" Relationship="Self.FK_meter_master_Table_2" FromRole="meter_master" ToRole="Table_2" />
+        </EntityType>
+        <EntityType Name="MeterType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Protocol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RegisterType" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="RegisterAddress" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ProtocolType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="meter_master" Relationship="Self.FK_meter_master_ProtocolTypes" FromRole="ProtocolTypes" ToRole="meter_master" />
+        </EntityType>
+        <EntityType Name="Register">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="meter_master" Relationship="Self.FK_meter_master_Registers" FromRole="Registers" ToRole="meter_master" />
+        </EntityType>
+        <EntityType Name="site_detail">
+          <Key>
+            <PropertyRef Name="SiD" />
+          </Key>
+          <Property Name="SiD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Site_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Builder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Street_Road" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pin_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact_Person_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact_Person_Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contact_Person_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Admin_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Admin_Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="house_details" Relationship="Self.FK_house_details_site_details" FromRole="site_details" ToRole="house_details" />
+          <NavigationProperty Name="meter_details" Relationship="Self.FK_meter_details_site_details" FromRole="site_details" ToRole="meter_details" />
+        </EntityType>
+        <EntityType Name="Table_1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="meter_master" Relationship="Self.FK_meter_master_Table_1" FromRole="Table_1" ToRole="meter_master" />
+          <NavigationProperty Name="Table_11" Relationship="Self.FK_Table_1_Table_1" FromRole="Table_1" ToRole="Table_11" />
+          <NavigationProperty Name="Table_12" Relationship="Self.FK_Table_1_Table_1" FromRole="Table_11" ToRole="Table_1" />
+        </EntityType>
+        <EntityType Name="Table_2">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="meter_master" Relationship="Self.FK_meter_master_Table_2" FromRole="Table_2" ToRole="meter_master" />
+        </EntityType>
+        <EntityType Name="utility_tarrif_master">
+          <Key>
+            <PropertyRef Name="UiD" />
+          </Key>
+          <Property Name="UiD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Utility_Provider_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Utility_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tarrif_Master" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Taxation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Charge_Back" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="meter_details" Relationship="Self.FK_meter_details_utility_tarrif_master" FromRole="utility_tarrif_master" ToRole="meter_details" />
+        </EntityType>
+        <EntityType Name="Water">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SocietyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HouseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MeterID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Port" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Utilityprovider" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Reading" Type="Int64" />
+          <Property Name="Datetimestamp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Timestamp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+            <PropertyRef Name="Model" />
+            <PropertyRef Name="ProductVersion" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRole">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="EmailConfirmed" />
+            <PropertyRef Name="PhoneNumberConfirmed" />
+            <PropertyRef Name="TwoFactorEnabled" />
+            <PropertyRef Name="LockoutEnabled" />
+            <PropertyRef Name="AccessFailedCount" />
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Organo">
+          <Key>
+            <PropertyRef Name="SiD" />
+            <PropertyRef Name="MiD" />
+          </Key>
+          <Property Name="SiD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="House_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Owner_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Utility_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IP_Address" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_house_details_site_details">
+          <End Role="site_details" Type="Self.site_detail" Multiplicity="1" />
+          <End Role="house_details" Type="Self.house_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="site_details">
+              <PropertyRef Name="SiD" />
+            </Principal>
+            <Dependent Role="house_details">
+              <PropertyRef Name="SiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meter_details_house_details">
+          <End Role="house_details" Type="Self.house_detail" Multiplicity="1" />
+          <End Role="meter_details" Type="Self.meter_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="house_details">
+              <PropertyRef Name="HiD" />
+            </Principal>
+            <Dependent Role="meter_details">
+              <PropertyRef Name="HiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meter_details_meter_master">
+          <End Role="meter_master" Type="Self.meter_master" Multiplicity="1" />
+          <End Role="meter_details" Type="Self.meter_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="meter_master">
+              <PropertyRef Name="MMiD" />
+            </Principal>
+            <Dependent Role="meter_details">
+              <PropertyRef Name="MMiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meter_details_site_details">
+          <End Role="site_details" Type="Self.site_detail" Multiplicity="1" />
+          <End Role="meter_details" Type="Self.meter_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="site_details">
+              <PropertyRef Name="SiD" />
+            </Principal>
+            <Dependent Role="meter_details">
+              <PropertyRef Name="SiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meter_details_utility_tarrif_master">
+          <End Role="utility_tarrif_master" Type="Self.utility_tarrif_master" Multiplicity="1" />
+          <End Role="meter_details" Type="Self.meter_detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utility_tarrif_master">
+              <PropertyRef Name="UiD" />
+            </Principal>
+            <Dependent Role="meter_details">
+              <PropertyRef Name="UiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meter_master_ProtocolTypes">
+          <End Role="ProtocolTypes" Type="Self.ProtocolType" Multiplicity="0..1" />
+          <End Role="meter_master" Type="Self.meter_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocolTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="meter_master">
+              <PropertyRef Name="PiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meter_master_Registers">
+          <End Role="Registers" Type="Self.Register" Multiplicity="0..1" />
+          <End Role="meter_master" Type="Self.meter_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Registers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="meter_master">
+              <PropertyRef Name="RiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meter_master_Table_1">
+          <End Role="Table_1" Type="Self.Table_1" Multiplicity="0..1" />
+          <End Role="meter_master" Type="Self.meter_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_1">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="meter_master">
+              <PropertyRef Name="TiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meter_master_Table_2">
+          <End Role="Table_2" Type="Self.Table_2" Multiplicity="0..1" />
+          <End Role="meter_master" Type="Self.meter_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_2">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="meter_master">
+              <PropertyRef Name="IiD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_1_Table_1">
+          <End Role="Table_1" Type="Self.Table_1" Multiplicity="1" />
+          <End Role="Table_11" Type="Self.Table_1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Table_1">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Table_11">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="designdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GasReadings" EntityType="Self.GasReading" />
+          <EntitySet Name="Graphs" EntityType="Self.Graph" />
+          <EntitySet Name="house_details" EntityType="Self.house_detail" />
+          <EntitySet Name="meter_details" EntityType="Self.meter_detail" />
+          <EntitySet Name="meter_masters" EntityType="Self.meter_master" />
+          <EntitySet Name="MeterTypes" EntityType="Self.MeterType" />
+          <EntitySet Name="ProtocolTypes" EntityType="Self.ProtocolType" />
+          <EntitySet Name="Registers" EntityType="Self.Register" />
+          <EntitySet Name="site_details" EntityType="Self.site_detail" />
+          <EntitySet Name="Table_1" EntityType="Self.Table_1" />
+          <EntitySet Name="Table_2" EntityType="Self.Table_2" />
+          <EntitySet Name="utility_tarrif_masters" EntityType="Self.utility_tarrif_master" />
+          <EntitySet Name="Waters" EntityType="Self.Water" />
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRole" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Organoes" EntityType="Self.Organo" />
+          <AssociationSet Name="FK_house_details_site_details" Association="Self.FK_house_details_site_details">
+            <End Role="site_details" EntitySet="site_details" />
+            <End Role="house_details" EntitySet="house_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meter_details_house_details" Association="Self.FK_meter_details_house_details">
+            <End Role="house_details" EntitySet="house_details" />
+            <End Role="meter_details" EntitySet="meter_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meter_details_meter_master" Association="Self.FK_meter_details_meter_master">
+            <End Role="meter_master" EntitySet="meter_masters" />
+            <End Role="meter_details" EntitySet="meter_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meter_details_site_details" Association="Self.FK_meter_details_site_details">
+            <End Role="site_details" EntitySet="site_details" />
+            <End Role="meter_details" EntitySet="meter_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meter_details_utility_tarrif_master" Association="Self.FK_meter_details_utility_tarrif_master">
+            <End Role="utility_tarrif_master" EntitySet="utility_tarrif_masters" />
+            <End Role="meter_details" EntitySet="meter_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meter_master_ProtocolTypes" Association="Self.FK_meter_master_ProtocolTypes">
+            <End Role="ProtocolTypes" EntitySet="ProtocolTypes" />
+            <End Role="meter_master" EntitySet="meter_masters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meter_master_Registers" Association="Self.FK_meter_master_Registers">
+            <End Role="Registers" EntitySet="Registers" />
+            <End Role="meter_master" EntitySet="meter_masters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meter_master_Table_1" Association="Self.FK_meter_master_Table_1">
+            <End Role="Table_1" EntitySet="Table_1" />
+            <End Role="meter_master" EntitySet="meter_masters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meter_master_Table_2" Association="Self.FK_meter_master_Table_2">
+            <End Role="Table_2" EntitySet="Table_2" />
+            <End Role="meter_master" EntitySet="meter_masters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_1_Table_1" Association="Self.FK_Table_1_Table_1">
+            <End Role="Table_1" EntitySet="Table_1" />
+            <End Role="Table_11" EntitySet="Table_1" />
+          </AssociationSet>
+          <FunctionImport Name="charts" ReturnType="Collection(designdbModel.charts_Result)" />
+          <FunctionImport Name="Electricity" ReturnType="Collection(designdbModel.Electricity_Result)">
+            <Parameter Name="Fromdate" Mode="In" Type="DateTime" />
+            <Parameter Name="Todate" Mode="In" Type="DateTime" />
+            <Parameter Name="Villa" Mode="In" Type="String" />
+            <Parameter Name="time" Mode="In" Type="Time" />
+          </FunctionImport>
+          <FunctionImport Name="EMeter" ReturnType="Collection(designdbModel.EMeter_Result)" />
+          <FunctionImport Name="GasMeter" ReturnType="Collection(designdbModel.GasMeter_Result)" />
+          <FunctionImport Name="WaterMeter" ReturnType="Collection(designdbModel.WaterMeter_Result)" />
+          <EntitySet Name="ddu_masters" EntityType="designdbModel.ddu_master" />
+          <EntitySet Name="Units" EntityType="designdbModel.Unit" />
+        </EntityContainer>
+        <ComplexType Name="charts_Result">
+          <Property Type="String" Name="Site_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="House_No" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Manufacturer" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="IP_Address" Nullable="true" MaxLength="16" />
+          <Property Type="String" Name="Port" Nullable="true" MaxLength="16" />
+          <Property Type="String" Name="Utility_Provider_Name" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Electricity_Result">
+          <Property Type="String" Name="Date" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="Time" Nullable="true" MaxLength="4000" />
+          <Property Type="Double" Name="Import" Nullable="true" />
+          <Property Type="Double" Name="Export" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="EMeter_Result">
+          <Property Type="String" Name="x" Nullable="true" MaxLength="4000" />
+          <Property Type="Double" Name="y" Nullable="true" />
+          <Property Type="Double" Name="z" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GasMeter_Result">
+          <Property Type="String" Name="x" Nullable="true" MaxLength="50" />
+          <Property Type="Int64" Name="y" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="WaterMeter_Result">
+          <Property Type="String" Name="x" Nullable="true" MaxLength="50" />
+          <Property Type="Int64" Name="y" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="ddu_master">
+          <Key>
+            <PropertyRef Name="DDUMiD" />
+          </Key>
+          <Property Name="DDUMiD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Unit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Startunit" Type="Int32" />
+          <Property Name="Endunit" Type="Int32" />
+          <Property Name="Price" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="designdbModelStoreContainer" CdmEntityContainer="designdbEntities">
+          <EntitySetMapping Name="GasReadings">
+            <EntityTypeMapping TypeName="designdbModel.GasReading">
+              <MappingFragment StoreEntitySet="GasReading">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+                <ScalarProperty Name="HouseID" ColumnName="HouseID" />
+                <ScalarProperty Name="MeterID" ColumnName="MeterID" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="Utilityprovider" ColumnName="Utilityprovider" />
+                <ScalarProperty Name="Reading" ColumnName="Reading" />
+                <ScalarProperty Name="Datetimestamp" ColumnName="Datetimestamp" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Graphs">
+            <EntityTypeMapping TypeName="designdbModel.Graph">
+              <MappingFragment StoreEntitySet="Graphs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+                <ScalarProperty Name="HouseID" ColumnName="HouseID" />
+                <ScalarProperty Name="OwnerName" ColumnName="OwnerName" />
+                <ScalarProperty Name="MeterID" ColumnName="MeterID" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="UtilityProvider" ColumnName="UtilityProvider" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="Reading" ColumnName="Reading" />
+                <ScalarProperty Name="PowerOut" ColumnName="PowerOut" />
+                <ScalarProperty Name="Datetimestamp" ColumnName="Datetimestamp" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="house_details">
+            <EntityTypeMapping TypeName="designdbModel.house_detail">
+              <MappingFragment StoreEntitySet="house details">
+                <ScalarProperty Name="HiD" ColumnName="HiD" />
+                <ScalarProperty Name="SiD" ColumnName="SiD" />
+                <ScalarProperty Name="House_No" ColumnName="House No" />
+                <ScalarProperty Name="Owner_Name" ColumnName="Owner Name" />
+                <ScalarProperty Name="Owner_Mobile" ColumnName="Owner Mobile" />
+                <ScalarProperty Name="Owner_Email" ColumnName="Owner Email" />
+                <ScalarProperty Name="Tenant_Name" ColumnName="Tenant Name" />
+                <ScalarProperty Name="Tenant_Email" ColumnName="Tenant Email" />
+                <ScalarProperty Name="Tenant_Mobile" ColumnName="Tenant Mobile" />
+                <ScalarProperty Name="Maintainance_Notes" ColumnName="Maintainance Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="meter_details">
+            <EntityTypeMapping TypeName="designdbModel.meter_detail">
+              <MappingFragment StoreEntitySet="meter details">
+                <ScalarProperty Name="MiD" ColumnName="MiD" />
+                <ScalarProperty Name="HiD" ColumnName="HiD" />
+                <ScalarProperty Name="SiD" ColumnName="SiD" />
+                <ScalarProperty Name="MBUS_Device_ID" ColumnName="MBUS Device ID" />
+                <ScalarProperty Name="MMiD" ColumnName="MMiD" />
+                <ScalarProperty Name="UiD" ColumnName="UiD" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Error_Code" ColumnName="Error Code" />
+                <ScalarProperty Name="Error_Msg" ColumnName="Error Msg" />
+                <ScalarProperty Name="IP_Address" ColumnName="IP Address" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="meter_masters">
+            <EntityTypeMapping TypeName="designdbModel.meter_master">
+              <MappingFragment StoreEntitySet="meter master">
+                <ScalarProperty Name="MMiD" ColumnName="MMiD" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Protocol" ColumnName="Protocol" />
+                <ScalarProperty Name="Register_Type" ColumnName="Register Type" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Import_Export" ColumnName="Import/Export" />
+                <ScalarProperty Name="RiD" ColumnName="RiD" />
+                <ScalarProperty Name="PiD" ColumnName="PiD" />
+                <ScalarProperty Name="TiD" ColumnName="TiD" />
+                <ScalarProperty Name="IiD" ColumnName="IiD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MeterTypes">
+            <EntityTypeMapping TypeName="designdbModel.MeterType">
+              <MappingFragment StoreEntitySet="MeterTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Protocol" ColumnName="Protocol" />
+                <ScalarProperty Name="RegisterType" ColumnName="RegisterType" />
+                <ScalarProperty Name="RegisterAddress" ColumnName="RegisterAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProtocolTypes">
+            <EntityTypeMapping TypeName="designdbModel.ProtocolType">
+              <MappingFragment StoreEntitySet="ProtocolTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registers">
+            <EntityTypeMapping TypeName="designdbModel.Register">
+              <MappingFragment StoreEntitySet="Registers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="site_details">
+            <EntityTypeMapping TypeName="designdbModel.site_detail">
+              <MappingFragment StoreEntitySet="site details">
+                <ScalarProperty Name="SiD" ColumnName="SiD" />
+                <ScalarProperty Name="Site_Name" ColumnName="Site Name" />
+                <ScalarProperty Name="Builder" ColumnName="Builder" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Street_Road" ColumnName="Street Road" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Pin_Code" ColumnName="Pin Code" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Lon" ColumnName="Lon" />
+                <ScalarProperty Name="Contact_Person_Name" ColumnName="Contact Person Name" />
+                <ScalarProperty Name="Contact_Person_Mobile" ColumnName="Contact Person Mobile" />
+                <ScalarProperty Name="Contact_Person_Email" ColumnName="Contact Person Email" />
+                <ScalarProperty Name="Admin_Email" ColumnName="Admin Email" />
+                <ScalarProperty Name="Admin_Mobile" ColumnName="Admin Mobile" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_1">
+            <EntityTypeMapping TypeName="designdbModel.Table_1">
+              <MappingFragment StoreEntitySet="Table_1">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_2">
+            <EntityTypeMapping TypeName="designdbModel.Table_2">
+              <MappingFragment StoreEntitySet="Table_2">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="utility_tarrif_masters">
+            <EntityTypeMapping TypeName="designdbModel.utility_tarrif_master">
+              <MappingFragment StoreEntitySet="utility tarrif master">
+                <ScalarProperty Name="UiD" ColumnName="UiD" />
+                <ScalarProperty Name="Utility_Provider_Name" ColumnName="Utility Provider Name" />
+                <ScalarProperty Name="Utility_Type" ColumnName="Utility Type" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Tarrif_Master" ColumnName="Tarrif Master" />
+                <ScalarProperty Name="Taxation" ColumnName="Taxation" />
+                <ScalarProperty Name="Charge_Back" ColumnName="Charge Back" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Waters">
+            <EntityTypeMapping TypeName="designdbModel.Water">
+              <MappingFragment StoreEntitySet="Water">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SocietyID" ColumnName="SocietyID" />
+                <ScalarProperty Name="HouseID" ColumnName="HouseID" />
+                <ScalarProperty Name="MeterID" ColumnName="MeterID" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="Utilityprovider" ColumnName="Utilityprovider" />
+                <ScalarProperty Name="Reading" ColumnName="Reading" />
+                <ScalarProperty Name="Datetimestamp" ColumnName="Datetimestamp" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="designdbModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="designdbModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="designdbModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="designdbModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserRoles">
+            <EntityTypeMapping TypeName="designdbModel.AspNetUserRole">
+              <MappingFragment StoreEntitySet="AspNetUserRoles">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="designdbModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organoes">
+            <EntityTypeMapping TypeName="designdbModel.Organo">
+              <MappingFragment StoreEntitySet="Organo">
+                <ScalarProperty Name="SiD" ColumnName="SiD" />
+                <ScalarProperty Name="House_No" ColumnName="House No" />
+                <ScalarProperty Name="Owner_Name" ColumnName="Owner Name" />
+                <ScalarProperty Name="MiD" ColumnName="MiD" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Utility_Type" ColumnName="Utility Type" />
+                <ScalarProperty Name="IP_Address" ColumnName="IP Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="charts" FunctionName="designdbModel.Store.charts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="designdbModel.charts_Result">
+                <ScalarProperty Name="Site_Name" ColumnName="Site Name" />
+                <ScalarProperty Name="House_No" ColumnName="House No" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="IP_Address" ColumnName="IP Address" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="Utility_Provider_Name" ColumnName="Utility Provider Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Electricity" FunctionName="designdbModel.Store.Electricity">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="designdbModel.Electricity_Result">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Import" ColumnName="Import" />
+                <ScalarProperty Name="Export" ColumnName="Export" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EMeter" FunctionName="designdbModel.Store.EMeter">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="designdbModel.EMeter_Result">
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="z" ColumnName="z" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GasMeter" FunctionName="designdbModel.Store.GasMeter">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="designdbModel.GasMeter_Result">
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="y" ColumnName="y" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="WaterMeter" FunctionName="designdbModel.Store.WaterMeter">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="designdbModel.WaterMeter_Result">
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="y" ColumnName="y" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="ddu_masters">
+            <EntityTypeMapping TypeName="designdbModel.ddu_master">
+              <MappingFragment StoreEntitySet="ddu master">
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="DDUMiD" ColumnName="DDUMiD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Units">
+            <EntityTypeMapping TypeName="designdbModel.Unit">
+              <MappingFragment StoreEntitySet="Units">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Endunit" ColumnName="Endunit" />
+                <ScalarProperty Name="Startunit" ColumnName="Startunit" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

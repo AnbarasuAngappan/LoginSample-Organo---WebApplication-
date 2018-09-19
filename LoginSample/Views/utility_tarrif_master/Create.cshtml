@@ -1,0 +1,146 @@
+﻿@model LoginSample.Models.UnitViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<script type="text/javascript">
+    function addOption() {
+        var rowId = 0;
+        var max = 0;
+        $('#optionslist .option-panel').each(function (i, n) {
+            // var check = $(n).children('input').attr('id')/*.prop() if jquery 1.6*/
+            var check = $(n).attr('id')/*.prop() if jquery 1.6*/
+            if (check > max) max = check;
+        });
+        rowId = parseInt(max) + 1;
+        var row = '<div id="' + rowId + '" class="option-panel">' +
+            '<input id="Options_Index" name="Options.Index" type="hidden" value="' + rowId + '">' +
+            '<div class="col-md-4" style="padding-bottom:0.93rem;width:250px;">' +
+            '<input class = "form-control" type="number" name="Options[' + rowId + '].Startunit" id="Options_' + rowId + '__Startunit"/>' +
+            '</div>' +
+            '<div class="col-md-4" style="padding-bottom:0.93rem;padding-left:210px;">' +
+            '<input class = "form-control" type="number" name="Options[' + rowId + '].Endunit" id="Options_' + rowId + '__Endunit"/>' +
+            '</div>' +
+            '<div class="col-md-4" style="padding-bottom:0.93rem;padding-left:210px;">' +
+            '<div class="input-group">' +
+            '<input class = "form-control" type="number" name="Options[' + rowId + '].Price" id="Options_' + rowId + '__Price"/>' +
+           
+            '<span class="input-group-btn">' +
+            '<button type="button" id="removeoption" onclick="javascript: removeOption(' + rowId + ');" class="btn btn-default">' +
+            '<span class="glyphicon glyphicon-trash"></span>' +
+            '</button>' +
+            '</span>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+        if (rowId < 5) {
+            $("#optionslist").append(row);
+        }
+
+    };
+    function removeOption(id) {
+        $("#optionslist").children("#" + id + "").remove();
+    };
+</script>
+
+<div class="box-typical box-typical-padding">
+    <h5 class="m-t-lg with-border">New Utility Tarrif Master Details</h5>
+    @using (Html.BeginForm("Create", "utility_tarrif_master", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Tarrif.Utility_Provider_Name, "Utility Provider Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Tarrif.Utility_Provider_Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Tarrif.Utility_Provider_Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Tarrif.Utility_Type, "Utility Type", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Utility_Type", null, "Please Select", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Tarrif.Utility_Type, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group row">
+                @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+            @*<div class="form-group row">
+                @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+            <div class="form-group row">
+                @*@Html.LabelFor(model => model.Tarrif_Master, "Unit Rate", htmlAttributes: new { @class = "control-label col-md-2" })*@
+                 <label class="control-label col-md-2">
+                    Units
+                    <input type="button" value="+" onclick="javascript: addOption();" class="btn btn-primary btn-sm" style="padding:0px;height:20px;width:20px;" />
+                </label> 
+                <div id="optionslist" class="col-md-10" style="padding-left:0;">
+                    @for (var i = 0; i < 1; i++)
+                    {
+                        <div id="@i" class="option-panel">
+                            @Html.Hidden("Options.Index", i)
+                            <div class="col-md-4" style="padding-bottom:0.93rem;">
+                                @Html.Label("Start Unit")
+                            </div>
+                            <div class="col-md-4" style="padding-bottom:0.93rem;">
+                               @Html.Label("End Unit")
+                            </div>
+                            <div class="col-md-4" style="padding-bottom:0.93rem;">
+                                @Html.Label("Price/Unit(Rs)")
+                            </div>
+                        </div>
+                    }
+                </div>
+                @*<div class="col-md-10">
+                    @Html.EditorFor(model => model.Tarrif_Master, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Tarrif_Master, "", new { @class = "text-danger" })
+                </div>*@
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Tarrif.Taxation, "Taxation", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Tarrif.Taxation, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Tarrif.Taxation, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group row">
+                @Html.LabelFor(model => model.Charge_Back, "Charge Back", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Charge_Back, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Charge_Back, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+            <div class="form-group row">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,96 @@
+﻿@model LoginSample.Models.house_detail
+
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box-typical box-typical-padding">
+    <h5 class="m-t-lg with-border">House Details</h5>
+    <div class="form-group row">
+        @Html.LabelFor(model => model.site_details.Site_Name, "Site Name", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.site_details.Site_Name)
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(model => model.House_No, "House No", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.House_No)
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(model => model.Owner_Name, "Owner Name", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Owner_Name)
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(model => model.Owner_Mobile, "Owner Mobile", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Owner_Mobile)
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(model => model.Owner_Email, "Owner Email", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Owner_Email)
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(model => model.Tenant_Name, "Tenant Name", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Tenant_Name)
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(model => model.Tenant_Mobile, "Tenant Mobile", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Tenant_Mobile)
+        </div>
+    </div>
+    <div class="form-group row">
+        @Html.LabelFor(model => model.Tenant_Email, "Tenant Email", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Tenant_Email)
+        </div>
+    </div>
+    <div class="tbl-cell tbl-cell-action-bordered">
+        <a class="btn btn-primary btn-sm" role="button" id="ajax" href="@Url.Action("Partial","meter_details",new { id = Model.HiD})">
+            Config Meter
+        </a>
+        @*<a href='@Url.Action("Partial","meter_details", new { id= Model.HiD })' class="ajax"> Config Meter</a>*@
+        @*@Html.ActionLink("Details", "Partial", new { id = Model.HiD, @class = "ajax" })*@
+    </div>
+
+</div>
+
+<div id="TargetDiv"></div>
+
+
+<div>
+
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+            $("#ajax").on("click", function (e) {
+                e.preventDefault();
+                var elementUrl = $(this).attr('href');
+                $.ajax({
+                    url: elementUrl,
+                    cache: false,
+                    success: function (data) {
+                        $('#TargetDiv').html(data);
+                    }
+                });
+            });
+        });
+    </script>
+
+}

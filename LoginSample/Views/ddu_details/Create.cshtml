@@ -1,0 +1,132 @@
+﻿@model LoginSample.Models.ddu_detail
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<div class="box-typical box-typical-padding">
+    <h5 class="m-t-lg with-border">New DDU Details</h5>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.SiD, "Site Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("SiD", null, "Please Select", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SiD, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.HiD, "HiD", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("HiD", null, "Please Select", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.HiD, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Device_No, "Device No", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Device_No", null, "Please Select", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Device_No, "", new { @class = "text-danger" })
+                </div>
+            </div>
+ 
+            <div class="form-group row">
+                @Html.LabelFor(model => model.IP_Address, "IP Address", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.IP_Address, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IP_Address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Port, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Port, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Port, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Manufacturer, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Manufacturer, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Manufacturer, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
+                </div>
+            </div>
+  
+            <div class="form-group row">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts
+{
+
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("#SiD").change(function () {
+            $("#HiD").empty();
+            var sid = $("#SiD").val();
+            if (sid)
+            {
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("GetHouseNo")',
+                    dataType: 'json',
+                    data: { id: sid },
+                    success: function (houses) {
+                        $.each(houses, function (i, house) {
+                            $("#HiD").append('<option value="' + house.HiD + '">' + house.House_No + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        alert('Failed to retrieve districts.' + ex);
+                    }
+                });
+            }
+            return false;
+        })
+    });
+    </script>
+
+}

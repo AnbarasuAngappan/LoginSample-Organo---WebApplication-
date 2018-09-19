@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="box-typical">
+    <header class="box-typical-header">
+        <div class="tbl-row">
+            <div class="tbl-cell tbl-cell-title">
+                <h3>Roles</h3>
+            </div>
+            <div class="tbl-cell tbl-cell-action-bordered">
+                <a href="@Url.Action("Create", "Role")" class="btn btn-primary btn-sm" role="button">
+                    Add
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="box-typical-body">
+        <div class="table-responsive">
+            <table id="table-edit" class="table table-bordered table-hover">
+                <tr>
+                    <th>
+                        Role name
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            <div class="btn-group btn-group-sm" style="float: none;">
+                                <a href="@Url.Action("Edit", "Role", new { id = item.Id })" clas class="tabledit-edit-button btn btn-sm btn-default" role="button">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                                <a href="@Url.Action("Delete", "Role", new { id = item.Id })" clas class="tabledit-edit-button btn btn-sm btn-default" role="button">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div><!--.box-typical-body-->
+</section>

@@ -1,0 +1,94 @@
+﻿@model IdentitySample.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage your account";
+}
+
+<div class="row">
+    <div>
+        <section class="box-typical">
+            <header class="box-typical-header-sm">@ViewBag.Title</header>
+            <article class="profile-info-item">
+                <header class="profile-info-item-header">
+                    <i class="font-icon font-icon-notebook-bird"></i>
+                    Change your account settings
+                </header>
+                <div class="text-block text-block-typical">
+                    <p class="text-success">@ViewBag.StatusMessage</p>
+                    <div>
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label">Password</label>
+                            <div class="col-md-10">
+                                @if (Model.HasPassword)
+                                {
+                                    @Html.ActionLink("Change your password", "ChangePassword", "Manage", null, new { @class = "btn btn-primary btn-sm", @role = "button" })
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Create", "SetPassword", "Manage", null, new { @class = "btn btn-primary btn-sm", @role = "button" })
+                                }
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 control-label">Phone Number</label>
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    @(Model.PhoneNumber ?? "None")
+                                   
+                                    @if (Model.PhoneNumber != null)
+                                    {
+
+                                        @Html.ActionLink("Change", "AddPhoneNumber", "Manage", null, new { @class = "btn btn-primary  btn-sm", @role = "button", @style = "margin:0px 10px 0px 10px" })
+                                        using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <input type="submit" value="Remove" class="btn btn-danger btn-sm" role="button" />
+                                        }
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink("Add", "AddPhoneNumber", "Manage", null, new { @class = "btn btn-primary btn-sm", @role = "button" })
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <dl class="dl-horizontal">
+
+                            @*<dt>External Logins:</dt>
+                                <dd>
+                                    @Model.Logins.Count [
+                                    @Html.ActionLink("Manage", "ManageLogins") ]
+                                </dd>*@
+                            @*<dt>Two-Factor Authentication:</dt>
+                                <dd>
+                                    <p>
+                                        There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+                                        for details on setting up this ASP.NET application to support two-factor authentication.
+                                    </p>
+                                    @if (Model.TwoFactor)
+                                    {
+                                        using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <text>Enabled
+                                                <input type="submit" value="Disable" class="btn btn-link" />
+                                            </text>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <text>Disabled
+                                                <input type="submit" value="Enable" class="btn btn-link" />
+                                            </text>
+                                        }
+                                    }
+                                </dd>*@
+                        </dl>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </div>
+</div>

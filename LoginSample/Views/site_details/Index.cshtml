@@ -1,0 +1,92 @@
+﻿@model IEnumerable<LoginSample.Models.site_detail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="box-typical">
+    <header class="box-typical-header">
+        <div class="tbl-row">
+            <div class="tbl-cell tbl-cell-title">
+                <h3>Site Details</h3>
+            </div>
+            <div class="tbl-cell tbl-cell-action-bordered">
+                <a class="btn btn-primary btn-sm" role="button" href="@Url.Action("Create","site_details")">
+                    Add
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="box-typical-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="table-edit">
+                <tbody>
+                    <tr>
+                        <th>
+                            Site Name
+                        </th>
+                        <th>
+                            Builder
+                        </th>
+                        <th>
+                            Street Name
+                        </th>
+                        <th>
+                            Area
+                        </th>
+                        <th>
+                            City
+                        </th>
+                        <th>
+                            Contact person Name
+                        </th>
+                        <th>
+                            Admin Email
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Site_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Builder)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Street_Road)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Area)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.City)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Contact_Person_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Admin_Email)
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-sm" style="float: none;">
+                                    <a class="tabledit-edit-button btn btn-sm btn-default" role="button" href="@Url.Action("Edit",new { id = item.SiD})">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                    <a class="tabledit-edit-button btn btn-sm btn-default" role="button" href="@Url.Action("Delete",new { id = item.SiD})">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div><!--.box-typical-body-->
+</section>
+

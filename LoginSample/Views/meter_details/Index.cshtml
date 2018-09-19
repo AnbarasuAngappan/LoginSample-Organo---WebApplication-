@@ -1,0 +1,88 @@
+﻿@model IEnumerable<LoginSample.Models.meter_detail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="box-typical">
+    <header class="box-typical-header">
+        <div class="tbl-row">
+            <div class="tbl-cell tbl-cell-title">
+                <h3>Meter Details</h3>
+            </div>
+            <div class="tbl-cell tbl-cell-action-bordered">
+                <a class="btn btn-primary btn-sm" role="button" href="@Url.Action("Create","meter_details")">
+                    Add
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="box-typical-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="table-edit">
+                <tbody>
+                    <tr>
+                        <th>
+                            Site Name
+                        </th>
+                        <th>
+                            House No
+                        </th>
+                        <th>
+                            IP Address
+                        </th>
+                        <th>
+                           Port
+                        </th>
+                        <th>
+                            Meter
+                        </th>
+
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.site_details.Site_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.house_details.House_No)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IP_Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Port)
+                        </td>
+                        <td>
+                            @if (item.meter_master != null && item.meter_master.IiD != null)
+                             {
+                                 @( item.meter_master.Manufacturer + " - " + item.meter_master.Model + " - " + item.meter_master.Table_1.Name + " - " + item.meter_master.Table_2.Name);
+                             }
+                            else{ 
+                                 @( item.meter_master.Manufacturer + " - " + item.meter_master.Model + " - " + item.meter_master.Table_1.Name );
+                            }
+                                
+
+                        </td>
+
+                        <td>
+                            <div class="btn-group btn-group-sm" style="float: none;">
+                                <a class="tabledit-edit-button btn btn-sm btn-default" role="button" href="@Url.Action("Edit",new { id = item.MiD})">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                                <a class="tabledit-edit-button btn btn-sm btn-default" role="button" href="@Url.Action("Delete",new { id = item.MiD})">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div><!--.box-typical-body-->
+</section>

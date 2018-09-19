@@ -1,0 +1,135 @@
+﻿@model LoginSample.Models.meter_master
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="box-typical box-typical-padding">
+    <h5 class="m-t-lg with-border">New Meter Master Details</h5>
+    @using (Html.BeginForm("Create", "meter_master", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+    <div>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Manufacturer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Manufacturer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Manufacturer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.TiD, "Type", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TiD", null, "Please Select", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TiD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.PiD, "Protocol", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("PiD", null, "Please Select", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PiD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row" id="import">
+            @Html.LabelFor(model => model.IiD, "Import/Export", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("IiD", null, "Please Select", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IiD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row" id="register">
+            @Html.LabelFor(model => model.RiD, "Register Type", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("RiD", null, "Please Select", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RiD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row" id="address">
+            @Html.LabelFor(model => model.Address, "Address", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Register_Type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn" />
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    $(function () {
+
+
+        $('#register').hide();
+        $('#address').hide();
+        $('#import').hide();
+
+        $("select").change(function () {
+            var val = $(this).find(":selected").text();
+            //alert(val);
+            if (val == "ModBus") {
+                $('#register').show();
+                $('#address').show();
+                $('#import').show();
+            }
+            else if (val == "RS232") {
+                $('#import').show();
+                $('#register').hide();
+                $('#address').hide();
+                
+            }
+           
+            else if (val == "Input Register") {
+                $('#register').show();
+                $('#address').show();
+                $('#import').show();
+            }
+            else if (val == "Holding Register") {
+                $('#register').show();
+                $('#address').show();
+                $('#import').show();
+            }
+            else if (val == "Import") {
+                $('#import').show();
+            }
+            else if (val == "Export") {
+                $('#import').show();
+            }
+            else {
+                $('#register').hide();
+                $('#address').hide();
+                $('#import').hide();
+            }
+
+        });
+    })
+</script>

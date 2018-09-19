@@ -1,0 +1,330 @@
+﻿
+@model ElectricityReadingViewModel
+@using LoginSample.Models;
+
+@{
+    ViewBag.Title = "ElectricityReading";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="https://cdn.syncfusion.com/ej2/material.css" rel="stylesheet">
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
+<style>
+
+    #control-container {
+        padding: 0px !important;
+    }
+
+    .row {
+        padding-bottom: 10px;
+        padding-right: 20px;
+        padding-left: 10px;
+    }
+    
+    /*.modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba( 255, 255, 255, .8 ) url('http://sampsonresume.com/labs/pIkfp.gif') 50% 50% no-repeat;
+    }*/
+
+    #required:after {
+        content: "*";
+        font-weight: bold;
+        color: red;
+    }
+
+    /* When the body has the loading class, we turn
+    the scrollbar off with overflow:hidden */
+    body.loading {
+        overflow: hidden;
+    }
+
+        /* Anytime the body has the loading class, our
+    modal element will be visible */
+        body.loading .modal {
+            display: block;
+        }
+</style>
+
+
+<div class="row">
+    <div class="col-lg-3">
+        <section class="box-typical" style="background-color:blue;">
+            <a class="myFunction" data-dismiss="modal" data-backdrop="false" style="color:white">
+
+                <div class="form-group row" style="text-align:center;padding-top:10px;">
+                   Master Meter
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        Owner Name :
+                    </div>
+                    @*@Html.DisplayFor(modelItem => item.OwnerName)*@
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        Serial No :
+                    </div>
+                    @*@Html.DisplayFor(modelItem => item.SerialNo)*@
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        DCU IP No :
+                    </div>
+                    @*@Html.DisplayFor(modelItem => item.IPAddress)*@
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        Current Import :
+                    </div>
+                    @*@Html.DisplayFor(modelItem => item.Reading)*@
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        Current Export :
+                    </div>
+                    @*@Html.DisplayFor(modelItem => item.PowerOut)*@
+                </div>
+            </a>
+        </section>
+    </div>
+    @foreach (var item in Model.GraphData)
+    {
+
+        <div class="col-lg-3">
+            <section class="box-typical">
+                <a class="myFunction" data-id="@item.HouseID" data-dismiss="modal" data-backdrop="false" style="color:black">
+
+                    <div class="form-group row" style="text-align:center;padding-top:10px;">
+                        @item.HouseID
+
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            Owner Name :
+                        </div>
+                        @Html.DisplayFor(modelItem => item.OwnerName)
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            Serial No :
+                        </div>
+                        @Html.DisplayFor(modelItem => item.SerialNo)
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            DCU IP No :
+                        </div>
+                        @Html.DisplayFor(modelItem => item.IPAddress)
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            Current Import :
+                        </div>
+                        @Html.DisplayFor(modelItem => (item.Reading))
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            Current Export :
+                        </div>
+                        @Html.DisplayFor(modelItem => item.PowerOut)
+                    </div>
+                </a>
+            </section>
+        </div>
+
+
+    }
+</div>
+
+
+
+@using (Html.BeginForm("GetChartData", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "chart_form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("id", "", new { @class = "hiddenid" })
+    <div class="modal fade" tabindex="-1" id="loginModal" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="margin-top:30%;">
+                <div class="modal-header">
+                    <button type="button" id="btnHideModal" class="close" data-dismiss="modal">
+                        ×
+                    </button>
+                    <div class="row">
+                        <div class="col-lg-2">
+                            @Html.Label("From", htmlAttributes: new { @class = "control-label col-md-4", @id = "required" })
+
+                            @Html.TextBoxFor(m => m.From, new { @class = "form-control datepicker", @placeholder = "Enter start date here...", @id = "From", @name = "From" })
+                            <div class='from-validation' style='color:red;margin-bottom: 10px;display:none'>Please select From date</div>
+                        </div>
+
+                        <div class="col-lg-2">
+                            @Html.Label("To", htmlAttributes: new { @class = "control-label col-md-4", @id = "required" })
+
+                            @Html.TextBoxFor(m => m.To, new { @class = "form-control datepicker", placeholder = "Enter end date here...", @id = "To", @name = "To" })
+                            <div class='to-validation' style='color:red;margin-bottom: 10px;display:none'>Please select To date</div>
+                        </div>
+
+                        <div class="col-lg-2">
+                            <input type="submit" value="Get Data" id="button1" class="btn" style="margin-top:22px;" />
+                        </div>
+                        
+                        <div class="col-lg-2">
+                            
+                            <a href="@Url.Action("ExportToExcel","Home")" class="inputImg"><input type="button" id="excel" value="Export Excel" class="btn" style="margin-top:22px;border:1px solid green;background:green;display:none;" /></a>
+                        </div>
+                      
+                    <div class="col-lg-2">
+                        <a href="@Url.Action("ExportToPDF","Home")" class="inputImg"><input type="button" id="pdf" value="Export PDF" class="btn" style="margin-top:22px;display:none;border:1px solid #e94c57;background:#e94c57;display:none;" /></a>
+                    </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="padding-left:20px;">
+                        <table id="readings_container" class="table" style="border:1px solid #ddd;">
+                            
+                        </table>
+                    </div>
+
+                </div>
+               
+            </div>
+        </div>
+    </div>
+
+}
+
+
+@section scripts{
+
+    <script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js" type="text/javascript"></script>
+
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    @*<script type="text/javascript" src="./scripts/jquery.ui.datepicker.validation.js"></script>*@
+    @*<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
+    <script type="text/javascript">
+
+        ej.base.enableRipple(true)
+
+
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: 'yy-M-dd',
+                changeMonth: true,
+                changeYear: true
+
+            }).attr('readonly', 'readonly');
+
+        });
+
+        function isValidFrom() {
+            var isvalid = true;
+            if ($('#From').val() == '') {
+                //$("#From").after("<div class='validation' style='color:red;margin-bottom: 10px;'>Please select date</div>");
+                $(".from-validation").show();
+                isvalid = false;
+            }
+
+            if ($('#To').val() == '') {
+                //$("#To").after("<div class='validation' style='color:red;margin-bottom: 10px;'>Please select date</div>");
+                $(".to-validation").show();
+                isvalid = false;
+            }
+            if (isvalid) {
+                //$("#From").next(".validation").remove();
+                //$("#To").next(".validation").remove();
+                $(".from-validation").hide();
+                $(".to-validation").hide();
+            }
+            return isvalid;
+        }
+
+        $('form').submit(function () {
+            return isValidFrom();
+        });
+
+        $("#btnHideModal").click(function () {
+            $("#loginModal").modal('hide');
+            $("#readings_container tbody").remove();
+            $("#readings_container thead").remove();
+            $('#From').val('');
+            $('#To').val('');
+        });
+        
+        $(document).ready(function () {
+
+            $(document).on("click", ".myFunction", function () {
+                $("#excel").css("display", "none");
+                $("#pdf").css("display", "none");
+                var myBookId = $(this).data('id');
+                //alert(myBookId);
+                $(".hiddenid").val(myBookId);
+                $('#loginModal').modal('show');
+            });
+           
+           
+            $(document).on("submit", "#chart_form", function (e) {
+                $("#readings_container tbody").remove();
+                $("#readings_container thead").remove();
+                e.preventDefault();
+                e.stopPropagation();
+                var $this = $(this);
+               
+                var serializedForm = $this.serialize();
+                console.log(serializedForm);
+                $.ajax({
+                    type: $this.attr('method'),
+                    url: $this.attr('action'),
+                    async: false,
+                    data: serializedForm,
+                    //beforeSend: function () { $('#loading').show(); },
+                    success: function (response) {
+                      
+                        var table = $("#readings_container");
+                        if (!(response == '')) {
+                            table.append("<thead><tr><th>Date</th><th>Time</th><th>Import(kWh)</th><th>Export(kWh)</th></tr></thead>");
+
+                            $.each(response, function (i, item) {
+
+                                $('<tr>').html(
+                                    "<td>" + response[i].Date + "</td><td>" + response[i].Time + "</td><td>" + response[i].Import + "</td><td>" + response[i].Export + "</td>").appendTo(table);
+                            });
+                            $("#excel").css("display", "block");
+                            $("#pdf").css("display", "block");
+                        }
+                        else {
+                            
+                            table.append("<thead><tr><th style='color: red; text-align: center;'>No Data Found</th></tr></thead>");
+                           
+                        }                     
+                    
+                    },
+                    error: function (response) {
+                        alert("Failed");
+                    }
+                });
+            });
+
+        });
+
+
+    </script>
+
+}
+
+
+
+

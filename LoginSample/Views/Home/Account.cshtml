@@ -1,0 +1,76 @@
+﻿
+<title>PivotGrid - Getting Started</title>
+
+<link href="http://cdn.syncfusion.com/16.2.0.46/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" type="text/css" />
+
+
+<!--Create a tag which acts as a container for ejPivotGrid widget.-->
+<div id="PivotGrid1" style="height: 600px; width: 100%; overflow: auto">
+</div>
+
+@section scripts{
+    @*<script src="http://cdn.syncfusion.com/js/assets/external/jquery-3.0.0.min.js" type="text/javascript"></script>*@
+    <script src="http://cdn.syncfusion.com/16.2.0.46/js/web/ej.web.all.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        var pivotData = [
+            { Amount: 100, Country: "Current Reading", Date: "FY 2005", Product: "Electricity", Quantity: 2, State: "Alberta" },
+            { Amount: 200, Country: "Previous Reading", Date: "FY 2006", Product: "DG", Quantity: 3, State: "British Columbia" },
+            { Amount: 300, Country: "Difference Reading", Date: "FY 2007", Product: "Solar", Quantity: 4, State: "Brunswick" },
+            { Amount: 150, Country: "Rate", Date: "FY 2008", Product: "Water", Quantity: 3, State: "Manitoba" },
+            { Amount: 200, Country: "Amount", Date: "FY 2006", Product: "LPG", Quantity: 4, State: "Ontario" },
+            { Country: "Monthly Maintanance", Product: "Electricity" },
+            { Country: "Club House Charges", Product: "Electricity"},
+            { Country: "Internet Charges", Product: "Electricity" },
+            { Country: "User Handlig Charges", Product: "Electricity" },
+            { Country: "Sub Total ----A", Product: "Electricity" },
+            { Country: "Advance ", Product: "Electricity" },
+            { Country: "Solar ",Product: "Electricity" },
+            { Country: "Misc", Product: "Electricity" },
+            { Country: "Sub Total ----B ", Product: "Electricity"},
+            { Country: " Grand Total(A - B)", Product: "Electricity"}
+
+        ];
+
+        $(function () {
+            $("#PivotGrid1").ejPivotGrid({
+                dataSource: {
+                    //Datasource bound to PivotGrid control.
+                    data: pivotData,
+                   
+                    //Required fields in row, column, value and filter areas of PivotGrid control.
+                    rows: [
+                        {
+                            fieldName: "Country",
+                            fieldCaption: "Country",
+                            sortOrder: ej.PivotAnalysis.SortOrder.None
+                        }
+                    ],
+                    columns: [
+                        {
+                            fieldName: "Product",
+                            fieldCaption: "Product",
+                            sortOrder: ej.PivotAnalysis.SortOrder.None
+                        }
+                    ],
+                    
+                    values: [
+                        {
+                            fieldName: "Amount",
+                            fieldCaption: "Amount"
+                        },
+                        {
+                            fieldName: "Quantity",
+                            fieldCaption: "Quantity"
+                        }
+                    ],
+                   
+                },
+                enableRowGrandTotal: false,
+                enableColumnGrandTotal: false
+
+            });
+        });
+
+    </script>
+}

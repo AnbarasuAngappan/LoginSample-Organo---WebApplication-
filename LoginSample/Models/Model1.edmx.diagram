@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6dbe394810344bb99b510aa4fd1568bc" Name="Diagram1">
+        <EntityTypeShape EntityType="designdbModel.GasReading" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.Graph" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.house_detail" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.meter_detail" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.meter_master" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.MeterType" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.ProtocolType" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.Register" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.site_detail" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.Table_1" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.Table_2" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.utility_tarrif_master" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.Water" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.C__MigrationHistory" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.AspNetRole" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.AspNetUserClaim" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.AspNetUserLogin" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.AspNetUserRole" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.AspNetUser" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="designdbModel.Organo" Width="1.5" PointX="11.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="designdbModel.FK_house_details_site_details" ManuallyRouted="false" />
+        <AssociationConnector Association="designdbModel.FK_meter_details_house_details" ManuallyRouted="false" />
+        <AssociationConnector Association="designdbModel.FK_meter_details_meter_master" ManuallyRouted="false" />
+        <AssociationConnector Association="designdbModel.FK_meter_details_site_details" ManuallyRouted="false" />
+        <AssociationConnector Association="designdbModel.FK_meter_details_utility_tarrif_master" ManuallyRouted="false" />
+        <AssociationConnector Association="designdbModel.FK_meter_master_ProtocolTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="designdbModel.FK_meter_master_Registers" ManuallyRouted="false" />
+        <AssociationConnector Association="designdbModel.FK_meter_master_Table_1" ManuallyRouted="false" />
+        <AssociationConnector Association="designdbModel.FK_meter_master_Table_2" ManuallyRouted="false" />
+        <AssociationConnector Association="designdbModel.FK_Table_1_Table_1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="designdbModel.ddu_master" Width="1.5" PointX="5.375" PointY="12.75" />
+        <EntityTypeShape EntityType="designdbModel.Unit" Width="1.5" PointX="7.375" PointY="12.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

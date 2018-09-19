@@ -1,0 +1,60 @@
+﻿@model IdentitySample.Models.LoginViewModel
+@using IdentitySample.Models;
+@using System.Web.Optimization;
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+<div class="container-fluid" style="margin-right:50rem;margin-top:10rem;">
+    @if (ViewBag.Login == "GateWayLogin")
+    {
+        <div class="sign-box" style="width:120%;">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="sign-avatar">
+                    <img src="~/Content/startui/img/avatar-sign.png" alt="">
+                </div>
+                <header class="sign-title">Sign In</header>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Username" })
+                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <div class="checkbox float-left">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        <label for="signed-in">Keep me signed in</label>
+                    </div>
+                </div>
+                <input type="submit" value="Log in" class="btn btn-rounded" />
+                @*<p class="sign-note">
+                        New to our website?
+                        @Html.ActionLink("Sign up", "Register")
+                    </p>*@
+                @* Enable this once you have account confirmation enabled for password reset functionality
+                    <p>
+                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                    </p>*@
+            }
+            <div>
+                @Html.Partial("~/Views/Account/_ExternalLoginsListPartial.cshtml", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </div>
+        </div>
+
+    }
+    else
+    {
+
+    }
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
