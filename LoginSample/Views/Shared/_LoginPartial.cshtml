@@ -1,8 +1,8 @@
 ﻿
 @using Microsoft.AspNet.Identity
-@{
-    ViewBag.Login = "GateWayLogin";
-}
+@*@{
+        ViewBag.Login = "GateWayLogin";
+    }*@
 @if (Request.IsAuthenticated)
 {
     <div class="dropdown user-menu">
@@ -27,13 +27,13 @@
 }
 else
 {
-    @*<div class="dropdown user-menu">
+    <div class="dropdown user-menu">
         @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
-    @*@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
 
-        </div>*@
-    if (ViewBag.Title != "Register")
-    {
-        @RenderPage("~/Views/Account/Login.cshtml", ViewBag.Login)
-    }
+    </div>
+    @*if (ViewBag.Title != "Register")
+        {
+            @RenderPage("~/Views/Account/Login.cshtml", ViewBag.Login)
+        }*@
 }
