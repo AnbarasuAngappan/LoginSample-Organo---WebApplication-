@@ -61,8 +61,8 @@ namespace IdentitySample
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "43135573398-07grss85523m6lua0ij11dusllk5rpnq.apps.googleusercontent.com",
-                ClientSecret = "YHshl8m59XAoauGdF8CdfVe2"
+                ClientId = "609197351861-l1updr44hnbqb86tjm6fmi77jnf9scn1.apps.googleusercontent.com",
+                ClientSecret = "6k5xBXqm7Qv5tG6PQpV2zMJm"
             });
         }
     }
